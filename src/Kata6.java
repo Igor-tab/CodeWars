@@ -1,6 +1,9 @@
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.math.BigInteger;
+import java.util.HashSet;
+import java.util.LinkedList;
 
 public class Kata6 {
     public static int solution(int number) {
@@ -211,6 +214,84 @@ public class Kata6 {
         else if (sumSDiag>sumPDiag) {return "Principal Diagonal win!";}
         return "Draw!";
     }
+    public static int[] arrayDiff(int[] a, int[] b) {
+        //Integer[] aAsInteger = new Integer[a.length];
+        //Arrays.setAll(aAsInteger, i -> a[i]);
+        LinkedList<Integer> listLookUp=new LinkedList();
+
+        for(int i:a){//add all elements of a to linked list
+            System.out.println(i);
+            listLookUp.add(i);
+        }
+
+        for(int i=0;i<b.length;i++){//for all int in b
+            System.out.println(b[i]);
+            while(listLookUp.contains(Integer.valueOf(b[i]))){//look if is in linked list
+                System.out.println(b[i] + " will be removed");
+                System.out.println("items in Liked lsit= "+ listLookUp.size());
+                listLookUp.remove(Integer.valueOf(b[i]));
+            }
+            System.out.println(b[i] + " is removed");
+        }
+        int [] re=new int [listLookUp.size()];
+        for (int i = 0; i < listLookUp.size(); i++) {
+           re[i]=listLookUp.get(i);
+        }
+
+        return re;
+    }
+    public static int digital_root(int n) {
+        String number=""+n;
+        int sum=0;
+        for (int i = 0; i < number.length(); i++) {
+            sum+=Character.getNumericValue(number.charAt(i));
+            System.out.println(Character.getNumericValue(number.charAt(i)));
+        }
+        if((int)sum/10==0) return sum;
+        return digital_root(sum);
+    }
+    public static int countBits(int n){
+        String biN=Integer.toBinaryString(n);
+        int cnt=0;
+        for (int i = 0; i < biN.length(); i++) {
+            if(biN.charAt(i)=='1')cnt++;
+        }
+        return cnt;
+    }
+    static int find(int[] integers) {
+        if (integers[0]% 2!=0 && integers[1]% 2!=0){
+            for (int integer : integers) {
+                if (integer % 2==0) return integer;
+            }
+        }
+        if (integers[0]% 2==0 && integers[1]% 2==0) {
+            for (int integer : integers) {
+                if (integer % 2 != 0) return integer;
+
+            }
+        }
+        if (integers[0]% 2==0 && integers[1]% 2!=0 && integers[2]% 2==0)  return integers[1];
+        if (integers[0]% 2!=0 && integers[1]% 2==0 && integers[2]% 2==0)  return integers[0];
+        if (integers[0]% 2!=0 && integers[1]% 2==0 && integers[2]% 2!=0)  return integers[1];
+        if (integers[0]% 2==0 && integers[1]% 2!=0 && integers[2]% 2!=0)  return integers[0];
+        return 0;
+        }
+    public static int duplicateCount(String text) {
+        int count=0;
+        HashMap<Character,Integer> map=new HashMap();
+        for(char a: text.toLowerCase().toCharArray()){
+           // System.out.println(a);
+            if(map.containsKey(a)){
+                //System.out.println(map.get(a));
+                map.replace(a,map.get(a)+1);
+            //System.out.println(map.get(a));
+            }
+            else map.put(a,1);
+            //System.out.println(map.get(a));
+        }
+        for(Character a : map.keySet()){
+            if(map.get(a)>1) count++;
+        }
+        return count ;
+    }
 }
-
-

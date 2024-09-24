@@ -136,6 +136,63 @@ public class Kata8 {
         return (int)(time*0.5);
 
     }
+    public static int[] digitize(long n) {
+        char[] tab=Long.toString(n).toCharArray();
+        for (int i = 0; i <tab.length ; i++) {System.out.println(tab[i]);}
+        int[] res=new int[tab.length];
+        for(int i=0; i<res.length;i++){
+            System.out.println(res[i]);
+           res[i]=Character.getNumericValue(tab[tab.length-i-1]);
+        }
+       return res;
+    }
+    public static String greet(String name) {
+        return "Hello, "+name+" how are you doing today?";
+    }
+    public static boolean isLove(final int flower1, final int flower2) {
+        return (flower1+flower2)%2==1 ;
+    }
+    public static String findNeedle(Object[] haystack) {
+        int j=0;
+        for (Object i : haystack) {
+            j++;
+            if(i.toString().equals("needle")){return "found the needle at position"+j--;}
+        }
+        return null;
+    }
+    public static boolean isDivisible(long n, long x, long y) {
+        return(n%x==0 && n%y==0)  ;
+    }
+    public static int[] map(int[] arr) {
+       for(int i=0; i<arr.length; i++){
+           arr[i]=arr[i]*2;
+       }
+        return arr;
+    }
+    public static int paperWork(int n, int m) {
+        if(n<0||m<0) return 0;
+        else return m*n;
+    }
+    public static String convert(boolean b) {
+        return (b)? "true" :"false";
+    }
+    public static String areYouPlayingBanjo(String name) {
+        return (name.charAt(0) == 'r' || name.charAt(0) == 'R') ? name + " plays banjo" : name + " does not play banjo";
+    }
+    public static double sum(double[] numbers) {
+        double res=0;
+        for(double i:numbers){
+            res+=i;
+        }
+        if(numbers==null)return 0.0;
+        return res;
+    }
+    public static int Past(int h, int m, int s)
+    {
+        return s*1000+m*60*1000+h*60*60*1000;
+    }
+
+
 }
 
 

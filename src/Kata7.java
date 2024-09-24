@@ -147,4 +147,61 @@ public class Kata7 {
         Arrays.sort(tab);
         return tab[0]+tab[1];
     }
+    public int GetSum(int a, int b){
+        if(a==b)return a;
+        int result=0;
+        if(a>b){
+            for (int i=b; i <=a ;i++) {
+                result+=i;
+            }
+        }
+        else {
+            for (int i = a; i <= b; i++) {
+                result += i;
+            }
+        }
+        return result;
+    }
+    public static String longest (String s1, String s2) {
+        TreeSet<Character> set=new TreeSet<>();
+        for(char a:s1.toCharArray()){
+            set.add(a);
+        }
+        for(char a:s2.toCharArray()){
+            set.add(a);
+        }
+        String res="";
+        for(char a:set){
+            res+=a;
+        }
+        return res;
+    }
+    public static long findNextSquare(long sq) {
+        if (Math.sqrt(sq)%1!=0)return -1;
+        long next=sq+1;
+        while(Math.sqrt(next)%1!=0){
+            next++;
+        }
+
+        return next;
+    }
+    public static String printerError(String s) {
+        int d= s.length();
+        int n= 0;
+        for (int i = 0; i < s.length(); i++) {
+            if(Integer.valueOf(s.charAt(i))>109)n++;
+        }
+        return""+n+"/"+d;
+    }
+    public static boolean solution(String str, String ending) {
+        if(str.length()<ending.length())return false;
+        StringBuilder srtRev=new StringBuilder(str).reverse();
+        StringBuilder EndingRev=new StringBuilder(ending).reverse();
+
+        for (int i =0;i< ending.length() ; i++) {
+            if(srtRev.charAt(i)!=EndingRev.charAt(i)) return false;
+        }
+
+        return true;
+    }
 }
