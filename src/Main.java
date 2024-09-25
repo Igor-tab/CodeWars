@@ -9,8 +9,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println(Kata6.duplicateCount("abcde" ));
-        System.out.println(Kata6.duplicateCount("aabbcde" ));
+        System.out.println(Kata5.makeReadable(70));
+        System.out.println(Kata5.makeReadable(3700));
+        System.out.println(Kata5.makeReadable(00));
+
     }
 }
 
